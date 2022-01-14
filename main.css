@@ -1,0 +1,119 @@
+*{
+	font-family: 'Montserrat', sans-serif;
+}
+.dark-blue-class{
+	background-color: #141B2D;
+}
+.connect-wallet{
+	background: linear-gradient(86.89deg, #ED691B 6.51%, #F18431 107.15%);
+	border-radius: 10px;
+	padding: 9px 16px 11px;
+	width: 146px;
+	height: 41px;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 21px;
+	color: #F2F2F2;
+	margin-right: 22px;
+	text-align: center;
+}
+.h-50{
+	min-height: 60px !important;
+}
+@media only screen and (max-width: 600px) {
+	.h-50{
+		justify-content: center;
+	}
+	.menu{
+		height: 200px !important;
+	}
+	.about h2{
+		padding-top: 20px !important;
+	}
+	.about p{
+		padding-bottom: 50px !important;
+	}
+	
+}
+.menu{
+	width: 100%;
+	height: 100vh;
+	background: #1A233B;
+}
+.menu-item{
+	padding: 20px 24px;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 24px;
+	color: #97A8D6;
+	border-bottom: 1px solid #141B2D;
+	cursor: pointer;
+}
+.bg-blue{
+	background-color: #2E384F;
+}
+.text-blue{
+	color: #97A8D6
+}
+.about{
+	width: 100%;
+	background-color: #2E384F;
+	min-height: 600px;
+}
+.about h2{
+	padding-top: 176px;
+	padding-bottom: 24px;
+}
+
+/* For svg map */
+svg{
+	transform:scale(1);
+	position:absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+#mydiv{
+	position:relative;
+}
+.info-modal{
+	position: absolute;
+	background: #1a243b;
+	border-radius: 10px;
+	display: none;
+}
+.info-modal ul{
+	list-style: none;
+	padding-left: 0;
+	padding: 20px 50px 20px 20px;
+	margin-bottom: 0;
+}
+.info-modal li{
+	color: #fff;
+	font-family: Montserrat;
+	font-weight: 500;
+}
+.info-modal li.build_name{
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+.info-modal li:not(:first-child), .info-modal li:not(:first-child) a {
+	color: #98a8d6;
+}
+.info-modal:after{
+	position: absolute;
+	content: '';
+	width: 0px;
+	height: 0px;
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid #1a243b;
+	right: -5px;
+	bottom: 10px;
+}
