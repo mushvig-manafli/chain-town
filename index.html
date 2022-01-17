@@ -15,7 +15,10 @@
   </head>
   <body>
     <header class="dark-blue-class py-2">
-        <img class="ml-4" src="images/logo.svg">
+        <img class="big_logo ml-4" src="images/logo.svg">
+        <img class="menu_hamburger ml-4 show-hide-menu" src="images/hamb.svg">
+        <img class="menu_hamburger-x ml-4 show-hide-menu" height="20" src="images/x.svg">
+        <img class="small_logo ml-4" src="images/small_logo.svg">
         <img class="float-right mr-4 mt-2" src="images/icon-chat.png">
         <a href="" class="float-right connect-wallet">Connect wallet</a>
     </header>
@@ -30,7 +33,7 @@
                             About
                         </div>
                         <div class="menu-item">
-                            <img src="images/path68.png" class="mr-1">
+                            <img src="images/Path68.png" class="mr-1">
                             Market
                         </div>
                         <div class="menu-item">
@@ -42,10 +45,14 @@
             </div>
 
             <div class="col-md-10 bg-blue " id="main-container">
-                <div class="row" id="mydiv" style="height: 500px; overflow: scroll">
+                <div class="row" id="mydiv" style=" overflow: scroll">
                     
-                    <object id="town-map" type="image/svg+xml" data="./map.svg" style="width: 100%; height: 500px; border:1px solid black; ">Your browser does not support SVG</object>
-
+                    <object id="town-map" type="image/svg+xml" data="./map.svg" style="width: 100%; height: 100%; border:1px solid black; ">Your browser does not support SVG</object>
+                    <div class="controls">
+                        <button id="zoom-in">+</button>
+                        <button id="reset">Reset</button>
+                        <button id="zoom-out">-</button>
+                    </div>
                 </div>
                 
                 <div class="about">
@@ -55,7 +62,7 @@
                         </div>
                         <div class="col-md-4">
                             <h2 class="text-white">About</h2>
-                            <p class="text-blue">And here is Chaintown. A town where each object has an NFT separately. This is not a game, it is a online map that is based on Cryptocity which give some opportunities to all people to buy, own and even sell the object such as houses, buildings, yachts etc. in these magnificent world. All these things are included in the list of NFT objects which are located in the Etherium Blockchain. The number of objects is limited. If you also want to own an object in this magnificent town, hurry up!</p>
+                            <p class="text-blue about-text">And here is Chaintown. A town where each object has an NFT separately. This is not a game, it is a online map that is based on Cryptocity which give some opportunities to all people to buy, own and even sell the object such as houses, buildings, yachts etc. in these magnificent world. All these things are included in the list of NFT objects which are located in the Etherium Blockchain. The number of objects is limited. If you also want to own an object in this magnificent town, hurry up!</p>
                         </div>
                     </div>
                 </div>
@@ -65,13 +72,13 @@
                     <footer class="dark-blue-class h-50 w-100">
                         <div class="container">
                             <div class="row">
-                                <div class="col-6"><img class="ml-4 py-2" src="images/logo.svg"></div>
-                                <div class="col-6 d-flex align-items-center justify-content-center">
-                                    <a href=""><img src="images/telegram.png" alt="" class="mx-1"></a>
-                                    <a href=""><img src="images/Vector.png" alt="" class="mx-1"></a>
-                                    <a href=""><img src="images/g.png" alt="" class="mx-1"></a>
-                                    <a href=""><img src="images/insta.png" alt="" class="mx-1"></a>
-                                    <a href=""><img src="images/twitter.png" alt="" class="mx-1"></a>
+                                <div class="col-md-6  footer-logo"><img class=" py-2" src="images/logo.svg"></div>
+                                <div class="col-md-6 d-flex align-items-center justify-content-center">
+                                    <a href=""><img src="images/telegram.png" alt="" class="mx-1 footer-icons"></a>
+                                    <a href=""><img src="images/Vector.png" alt="" class="mx-1 footer-icons"></a>
+                                    <a href=""><img src="images/g.png" alt="" class="mx-1 footer-icons"></a>
+                                    <a href=""><img src="images/insta.png" alt="" class="mx-1 footer-icons"></a>
+                                    <a href=""><img src="images/twitter.png" alt="" class="mx-1 footer-icons"></a>
                                 </div>
                             </div>
                         </div>

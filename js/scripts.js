@@ -1,41 +1,138 @@
 window.onload = function() {
-    svgPanZoom('#town-map', {
+  var zoomTool = svgPanZoom('#town-map', {
       zoomEnabled: true,
-      controlIconsEnabled: true
+      controlIconsEnabled: true,
+      minZoom: 1,
+      zoomScaleSensitivity: 0.5,
+      mouseWheelZoomEnabled: false,
+      onPan: function(){
+        var townMapElement = document.getElementById("town-map");
+        $(townMapElement).find('g').css('opacity', 1);
+        $('body').find('.info-modal').hide();
+      },
+      controlIconsEnabled: false
     });
-  };
+  zoomTool.zoomAtPointBy(1.6, {x: 300, y: 200})
+  document.getElementById('zoom-in').addEventListener('click', function(e){
+    e.preventDefault()
+
+    zoomTool.zoomIn()
+  });
+
+  document.getElementById('zoom-out').addEventListener('click', function(e){
+    e.preventDefault()
+
+    zoomTool.zoomOut()
+  });
+
+  document.getElementById('reset').addEventListener('click', function(e){
+    e.preventDefault()
+
+    zoomTool.resetZoom()
+  });
+};
+  
 
 
   var townMapElement = document.getElementById("town-map");
 
   townMapElement.addEventListener("load",function(){
       var svgDoc = townMapElement.contentDocument;
+      var blankArray = [];
       myarray = ['MAPRT_1','MAPRT_2','MAPRT_3','MAPRT_4','MAPRT_5','MAPRT_6','MAPRT_7','MAPRT_8','MAPRT_9','MAPRT_10','MAPRT_11','MAPRT_12','MAPRT_13','MAPRT_14','MAPRT_15','MAPRT_16','MAPRT_17','MAPRT_18',
       'saprt_1','saprt_2','saprt_3','saprt_4','saprt_5','saprt_6','saprt_7','saprt_8','saprt_9','saprt_10',
       'DR_x5F_6','DR_x5F_5','DR_x5F_4','DR_x5F_3','DR_x5F_2','DR_x5F_1',
       'PBT_x5F_1','PBT_x5F_2','PBT_x5F_3',
       'LT_x5F_1','LT_x5F_2','LT_x5F_3',
       'PREMIUM_TOWER', 'HOTEL'];
+
+      $(svgDoc).on('click', 'svg', function(){
+        blankArray = [];
+      })
+      setTimeout(() => {
+        $(svgDoc).find('svg').removeClass('page-load-transition').addClass('drag-transition');
+      }, 2000);
+
+
+
+
       $(svgDoc).on('click', 'g', function(){
-          if(jQuery.inArray($(this).attr('id'), myarray) != -1) {
-              let build_id = '#' + $(this).attr('id');
-              $(svgDoc).find('g').css('opacity', 0.5);
-              $(svgDoc).find('.svg-pan-zoom_viewport').css('opacity', 1);
-              $(svgDoc).find(build_id).css('opacity', 1);
-              $(svgDoc).find(build_id).find('g').css('opacity', 1);
-              $('body').find('.info-modal').css({
-                  top: $(svgDoc).find(build_id).position().top-30,
-                  left: $(svgDoc).find(build_id).position().left-30
-                  
-              })
-              $('body').find('.build_name').text($(this).attr('id'));
-              $('body').find('.info-modal').show();
+          blankArray.push($(this).attr('id'));
+          blankArray = blankArray.filter(function( element ) {
+            return element !== undefined;
+          });
+          if(blankArray.length > 1) {
+            if(jQuery.inArray(blankArray[0], myarray) != -1) {
+                let build_id = '#' + blankArray[0];
+                $(svgDoc).find('g').css('opacity', 0.5);
+                $(svgDoc).find('.svg-pan-zoom_viewport').css('opacity', 1);
+                $(svgDoc).find(build_id).css('opacity', 1);
+                $(svgDoc).find(build_id).find('g').css('opacity', 1);
+                $(svgDoc).find(build_id).parent().css('opacity', 1);
+                $('body').find('.build_name').text(blankArray[0]);
+                $('body').find('.info-modal').show();  
+                if(blankArray[0] == 'HOTEL' || blankArray[0] == 'PREMIUM_TOWER'){
+                  if($(svgDoc).find(build_id).position().top > 0){
+                      $('body').find('.info-modal').removeClass('top');
+                      $('body').find('.info-modal').css({
+                          top: $(svgDoc).find(build_id).position().top + 50,
+                          left: $(svgDoc).find(build_id).position().left + 150 - ($('body').find('.info-modal').width() - 188)
+                      })
+                  } else {
+                      $('body').find('.info-modal').addClass('top');
+                      $('body').find('.info-modal').css({
+                          top: 60,
+                          left: $(svgDoc).find(build_id).position().left + 150 - ($('body').find('.info-modal').width() - 188)
+                      })
+                  }
+                } else {
+                  if($(svgDoc).find(build_id).position().top > 0){
+                    $('body').find('.info-modal').removeClass('top');
+                    $('body').find('.info-modal').css({
+                        top: $(svgDoc).find(build_id).position().top ,
+                        left: $(svgDoc).find(build_id).position().left + 80 - ($('body').find('.info-modal').width() - 188)
+                    })
+                  } else {
+                      $('body').find('.info-modal').addClass('top');
+                      $('body').find('.info-modal').css({
+                          top: 60,
+                          left: $(svgDoc).find(build_id).position().left + 80 - ($('body').find('.info-modal').width() - 188)
+                      })
+                  }
+                }
+              }
+          } else {
+            $(svgDoc).find('g').css('opacity', 1);
+            $('body').find('.info-modal').hide();
           }
       })
 
-      $(svgDoc).on('click', '.svg-pan-zoom-control', function(){
-          $(svgDoc).find('g').css('opacity', 1);
-          $('body').find('.info-modal').hide();
-          
+      $(svgDoc).on('click', '.svg-pan-zoom-control', function(e){
+        //   $(svgDoc).find('g').css('opacity', 1);
+        //   $('body').find('.info-modal').hide();
+        console.log(e)
       })
   }, false);
+
+
+  //menu
+
+  let state = 1;
+  $('.show-hide-menu').click(function(){
+    if(state ==0){
+      $("#menu").animate({
+        "right":"100%"
+      });
+      state = 1;
+      $('.menu_hamburger').fadeIn();
+      $('.menu_hamburger-x').hide();
+    }
+    else{
+      state=0;
+      $("#menu").animate({
+        "right":"0px"
+      });
+      $('.menu_hamburger-x').fadeIn();
+      $('.menu_hamburger').hide();
+    }
+  });
