@@ -67,7 +67,7 @@ window.onload = function() {
 
 
 
-      $(svgDoc).on('click tap touch', 'g', function(){
+      $(svgDoc).on('click tap touchstart', 'g', function(){
           blankArray.push($(this).attr('id'));
           blankArray = blankArray.filter(function( element ) {
             return element !== undefined;
@@ -167,7 +167,7 @@ window.onload = function() {
           }
       })
 
-      $(svgDoc).on('click tap touch', '.svg-pan-zoom-control', function(e){
+      $(svgDoc).on('click tap touchstart', '.svg-pan-zoom-control', function(e){
           $(svgDoc).find('g').css('opacity', 1);
           $('body').find('.info-modal').hide();
         console.log(e)
