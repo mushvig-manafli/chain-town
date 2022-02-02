@@ -1,9 +1,6 @@
 *{
 	font-family: 'Montserrat', sans-serif;
 }
-#town-map{
-	transform:scale(1.6);
-}
 .controls{
 	position: absolute;
     left: 0;
@@ -68,6 +65,9 @@
 .menu_hamburger, .menu_hamburger-x{
 	display: none;
 }
+#town-map{
+	transform:scale(2);
+}
 @media only screen and (max-width: 762px) {
 	
 	.menu_hamburger{
@@ -106,7 +106,7 @@
 		font-size: 12px;
 		position: absolute;
 		top: 5px;
-		right: 40px;
+		right: 20px;
 		margin-right: 22px;
 		text-align: center;
 	}
@@ -197,7 +197,7 @@ svg{
 .info-modal li:not(:first-child), .info-modal li:not(:first-child) a {
 	color: #98a8d6;
 }
-.info-modal:after{
+/* .info-modal:after{
 	position: absolute;
 	content: '';
 	width: 0px;
@@ -207,4 +207,4 @@ svg{
 	border-left: 5px solid #1a243b;
 	right: -5px;
 	bottom: 10px;
-}
+} */
