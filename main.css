@@ -34,16 +34,18 @@
 	background: linear-gradient(86.89deg, #ED691B 6.51%, #F18431 107.15%);
 	border-radius: 10px;
 	padding: 9px 16px 11px;
-	width: 146px;
+	min-width: 146px;
 	height: 41px;
 	font-family: Montserrat;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 14px;
 	line-height: 21px;
-	color: #F2F2F2;
+	color: #F2F2F2 !important;
+	text-decoration: none !important;
 	margin-right: 22px;
 	text-align: center;
+	cursor: pointer !important;
 }
 .h-50{
 	min-height: 60px !important;
@@ -60,7 +62,14 @@
 .footer-logo{
 	text-align: left;
 }
+.menu_hamburger, .menu_hamburger-x{
+	display: none;
+}
 @media only screen and (max-width: 762px) {
+	
+	.menu_hamburger{
+		display: inline-block;
+	}
 	.h-50{
 		justify-content: center;
 	}
@@ -86,7 +95,7 @@
 	}
 	.connect-wallet{
 		padding: 9px 16px 11px;
-		width: 126px;
+		/* min-width: 126px; */
 		height: 41px;
 		font-family: Montserrat;
 		font-style: normal;
@@ -102,7 +111,7 @@
 		text-align: center;
 	}
 	#mydiv{
-		height: 400px !important;
+		max-height: 320px !important;
 	}
 	
 }
@@ -123,6 +132,13 @@
 	color: #97A8D6;
 	border-bottom: 1px solid #141B2D;
 	cursor: pointer;
+}
+.menu-item a{
+	color: #97A8D6;
+	text-decoration: none;
+}
+.menu-item a:hover{
+	color:white;
 }
 .bg-blue{
 	background-color: #2E384F;
