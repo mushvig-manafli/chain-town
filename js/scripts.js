@@ -12,12 +12,12 @@ window.onload = function() {
       },
       controlIconsEnabled: false
     });
-    if(window.innerWidth <= 800){
-      zoomTool.zoomAtPointBy(1.6, {x: 200, y: 100})
-    }
-    else{
-      zoomTool.zoomAtPointBy(1.6, {x: 800, y: 600})
-    }
+   // if(window.innerWidth <= 800){
+     // zoomTool.zoomAtPointBy(1.6, {x: 200, y: 100})
+   // }
+   // else{
+   //   zoomTool.zoomAtPointBy(1.6, {x: 800, y: 600})
+   // }
   
   document.getElementById('zoom-in').addEventListener('click', function(e){
     e.preventDefault()
