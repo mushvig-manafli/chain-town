@@ -12,12 +12,12 @@ window.onload = function() {
       },
       controlIconsEnabled: false
     });
-   // if(window.innerWidth <= 800){
-     // zoomTool.zoomAtPointBy(1.6, {x: 200, y: 100})
-   // }
-   // else{
-   //   zoomTool.zoomAtPointBy(1.6, {x: 800, y: 600})
-   // }
+    // if(window.innerWidth <= 800){
+    //   zoomTool.zoomAtPointBy(1.6, {x: 200, y: 100})
+    // }
+    // else{
+    //   zoomTool.zoomAtPointBy(1.6, {x: 800, y: 600})
+    // }
   
   document.getElementById('zoom-in').addEventListener('click', function(e){
     e.preventDefault()
@@ -67,7 +67,7 @@ window.onload = function() {
 
 
 
-      $(svgDoc).on('click tap touchstart', 'g', function(){
+      $(svgDoc).on('click tap touch', 'g', function(){
           blankArray.push($(this).attr('id'));
           blankArray = blankArray.filter(function( element ) {
             return element !== undefined;
@@ -105,35 +105,60 @@ window.onload = function() {
                 // $('body').find('#permalink').attr("href",homes["permalink"]);
 
                 $('body').find('.info-modal').show();  
-                if(blankArray[0] == 'HOTEL' || blankArray[0] == 'PREMIUM_TOWER'){
-                  if($(svgDoc).find(build_id).position().top > 0){
+                $('body').find('.info-modal').removeClass('top');
+                    
+
+                // if(window.innerWidth <= 800){
+                //   $('body').find('.info-modal').css({
+                //     top: 100 ,
+                //     left: 80
+                //   });
+                // }
+                // else{
+                //   $('body').find('.info-modal').css({
+                //     top: window.innerHeight*1/2 ,
+                //     left: window.innerWidth*1/2
+                //   });
+                // }
+                if(window.innerWidth <= 800){
+                  $('body').find('.info-modal').css({
+                    top: 180 ,
+                    left: 20
+                  });
+                }
+                else{
+                  if(blankArray[0] == 'HOTEL' || blankArray[0] == 'PREMIUM_TOWER'){
+                    if($(svgDoc).find(build_id).position().top > 0){
+                        $('body').find('.info-modal').removeClass('top');
+                        $('body').find('.info-modal').css({
+                            top: $(svgDoc).find(build_id).position().top + 50,
+                            left: $(svgDoc).find(build_id).position().left + 150 - ($('body').find('.info-modal').width() - 188)
+                        })
+                    } else {
+                        $('body').find('.info-modal').addClass('top');
+                        $('body').find('.info-modal').css({
+                            top: 60,
+                            left: $(svgDoc).find(build_id).position().left + 150 - ($('body').find('.info-modal').width() - 188)
+                        })
+                    }
+                  } else {
+                    if($(svgDoc).find(build_id).position().top > 0){
                       $('body').find('.info-modal').removeClass('top');
                       $('body').find('.info-modal').css({
-                          top: $(svgDoc).find(build_id).position().top + 50,
-                          left: $(svgDoc).find(build_id).position().left + 150 - ($('body').find('.info-modal').width() - 188)
-                      })
-                  } else {
-                      $('body').find('.info-modal').addClass('top');
-                      $('body').find('.info-modal').css({
-                          top: 60,
-                          left: $(svgDoc).find(build_id).position().left + 150 - ($('body').find('.info-modal').width() - 188)
-                      })
-                  }
-                } else {
-                  if($(svgDoc).find(build_id).position().top > 0){
-                    $('body').find('.info-modal').removeClass('top');
-                    $('body').find('.info-modal').css({
-                        top: $(svgDoc).find(build_id).position().top ,
-                        left: $(svgDoc).find(build_id).position().left + 80 - ($('body').find('.info-modal').width() - 188)
-                    })
-                  } else {
-                      $('body').find('.info-modal').addClass('top');
-                      $('body').find('.info-modal').css({
-                          top: 60,
+                          top: $(svgDoc).find(build_id).position().top ,
                           left: $(svgDoc).find(build_id).position().left + 80 - ($('body').find('.info-modal').width() - 188)
                       })
+                    } else {
+                        $('body').find('.info-modal').addClass('top');
+                        $('body').find('.info-modal').css({
+                            top: 60,
+                            left: $(svgDoc).find(build_id).position().left + 80 - ($('body').find('.info-modal').width() - 188)
+                        })
+                    }
                   }
                 }
+                    
+                
               }
           } else {
             
@@ -142,7 +167,7 @@ window.onload = function() {
           }
       })
 
-      $(svgDoc).on('click tap touchstart', '.svg-pan-zoom-control', function(e){
+      $(svgDoc).on('click tap touch', '.svg-pan-zoom-control', function(e){
           $(svgDoc).find('g').css('opacity', 1);
           $('body').find('.info-modal').hide();
         console.log(e)
