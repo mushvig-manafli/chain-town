@@ -1,6 +1,9 @@
 *{
 	font-family: 'Montserrat', sans-serif;
 }
+#town-map{
+	transform:scale(2);
+}
 .controls{
 	position: absolute;
     left: 0;
