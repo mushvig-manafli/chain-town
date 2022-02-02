@@ -2,7 +2,7 @@
 	font-family: 'Montserrat', sans-serif;
 }
 #town-map{
-	transform:scale(2);
+	transform:scale(1.6);
 }
 .controls{
 	position: absolute;
