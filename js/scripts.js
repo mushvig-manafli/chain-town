@@ -1,56 +1,24 @@
 
-if(window.innerWidth > 800){
-  window.onload = function() {
-    var zoomTool = svgPanZoom('#town-map', {
-        zoomEnabled: true,
-        controlIconsEnabled: true,
-        minZoom: 1,
-        zoomScaleSensitivity: 0.5,
-        mouseWheelZoomEnabled: false,
-        onPan: function(){
-          var townMapElement = document.getElementById("town-map");
-          // $(townMapElement).find('g').css('opacity', 1);
-          $('body').find('.info-modal').hide();
-        },
-        controlIconsEnabled: false
-      });
-   
-    
-    // document.getElementById('zoom-in').addEventListener('click', function(e){
-    //   e.preventDefault()
-  
-    //   zoomTool.zoomIn()
-    // });
-  
-    // document.getElementById('zoom-out').addEventListener('click', function(e){
-    //   e.preventDefault()
-  
-    //   zoomTool.zoomOut()
-    // });
-  
-    // document.getElementById('reset').addEventListener('click', function(e){
-    //   e.preventDefault()
-  
-    //   zoomTool.resetZoom()
-    // });
-  };
-}
-else{
-  var zoomTool = svgPanZoom('#town-map', {
-    zoomEnabled: false,
-    controlIconsEnabled: true,
-    minZoom: 1,
-    zoomScaleSensitivity: 0.5,
-    mouseWheelZoomEnabled: false,
-    onPan: function(){
-      var townMapElement = document.getElementById("town-map");
-      // $(townMapElement).find('g').css('opacity', 1);
-      $('body').find('.info-modal').hide();
-    }
-  });
-}
 
 
+window.onload = function() {
+  // var zoomTool = svgPanZoom('#town-map', {
+  //     zoomEnabled: false,
+  //     controlIconsEnabled: false,
+  //     minZoom: 1,
+  //     zoomScaleSensitivity: 1,
+  //     mouseWheelZoomEnabled: false,
+  //     onPan: function(){
+  //       var townMapElement = document.getElementById("town-map");
+  //       // $(townMapElement).find('g').css('opacity', 1);
+        
+  //     },
+  //     controlIconsEnabled: false
+  //   });
+ 
+  $('body').find('.info-modal').hide();
+  
+};
   
 
 
@@ -82,6 +50,7 @@ else{
 
 
       $(svgDoc).on('click tap touchstart', 'g', function(){
+        $('body').find('.info-modal').hide();
           blankArray.push($(this).attr('id'));
           blankArray = blankArray.filter(function( element ) {
             return element !== undefined;
@@ -138,7 +107,7 @@ else{
                   if(blankArray[0] == 'HOTEL' || blankArray[0] == 'PREMIUM_TOWER'){
                     $('body').find('.info-modal').css({
                       top: 100,
-                      left: 20
+                      left: 30
                     });
                     
                   }
