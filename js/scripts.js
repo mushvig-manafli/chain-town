@@ -1,40 +1,56 @@
 
-
-
-window.onload = function() {
-  var zoomTool = svgPanZoom('#town-map', {
-      zoomEnabled: true,
-      controlIconsEnabled: true,
-      minZoom: 1,
-      zoomScaleSensitivity: 0.5,
-      mouseWheelZoomEnabled: false,
-      onPan: function(){
-        var townMapElement = document.getElementById("town-map");
-        // $(townMapElement).find('g').css('opacity', 1);
-        $('body').find('.info-modal').hide();
-      },
-      controlIconsEnabled: false
-    });
- 
+if(window.innerWidth > 800){
+  window.onload = function() {
+    var zoomTool = svgPanZoom('#town-map', {
+        zoomEnabled: true,
+        controlIconsEnabled: true,
+        minZoom: 1,
+        zoomScaleSensitivity: 0.5,
+        mouseWheelZoomEnabled: false,
+        onPan: function(){
+          var townMapElement = document.getElementById("town-map");
+          // $(townMapElement).find('g').css('opacity', 1);
+          $('body').find('.info-modal').hide();
+        },
+        controlIconsEnabled: false
+      });
+   
+    
+    // document.getElementById('zoom-in').addEventListener('click', function(e){
+    //   e.preventDefault()
   
-  document.getElementById('zoom-in').addEventListener('click', function(e){
-    e.preventDefault()
-
-    zoomTool.zoomIn()
+    //   zoomTool.zoomIn()
+    // });
+  
+    // document.getElementById('zoom-out').addEventListener('click', function(e){
+    //   e.preventDefault()
+  
+    //   zoomTool.zoomOut()
+    // });
+  
+    // document.getElementById('reset').addEventListener('click', function(e){
+    //   e.preventDefault()
+  
+    //   zoomTool.resetZoom()
+    // });
+  };
+}
+else{
+  var zoomTool = svgPanZoom('#town-map', {
+    zoomEnabled: false,
+    controlIconsEnabled: true,
+    minZoom: 1,
+    zoomScaleSensitivity: 0.5,
+    mouseWheelZoomEnabled: false,
+    onPan: function(){
+      var townMapElement = document.getElementById("town-map");
+      // $(townMapElement).find('g').css('opacity', 1);
+      $('body').find('.info-modal').hide();
+    }
   });
+}
 
-  document.getElementById('zoom-out').addEventListener('click', function(e){
-    e.preventDefault()
 
-    zoomTool.zoomOut()
-  });
-
-  document.getElementById('reset').addEventListener('click', function(e){
-    e.preventDefault()
-
-    zoomTool.resetZoom()
-  });
-};
   
 
 
