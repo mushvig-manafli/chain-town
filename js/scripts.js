@@ -1,3 +1,6 @@
+
+
+
 window.onload = function() {
   var zoomTool = svgPanZoom('#town-map', {
       zoomEnabled: true,
@@ -12,12 +15,7 @@ window.onload = function() {
       },
       controlIconsEnabled: false
     });
-    // if(window.innerWidth <= 800){
-    //   zoomTool.zoomAtPointBy(1.6, {x: 200, y: 100})
-    // }
-    // else{
-    //   zoomTool.zoomAtPointBy(1.6, {x: 800, y: 600})
-    // }
+ 
   
   document.getElementById('zoom-in').addEventListener('click', function(e){
     e.preventDefault()
@@ -121,10 +119,19 @@ window.onload = function() {
                 //   });
                 // }
                 if(window.innerWidth <= 800){
-                  $('body').find('.info-modal').css({
-                    top: 180 ,
-                    left: 20
-                  });
+                  if(blankArray[0] == 'HOTEL' || blankArray[0] == 'PREMIUM_TOWER'){
+                    $('body').find('.info-modal').css({
+                      top: 100,
+                      left: 20
+                    });
+                    
+                  }
+                  else{
+                    $('body').find('.info-modal').css({
+                      top: $(svgDoc).find(build_id).position().top,
+                      left: $(svgDoc).find(build_id).position().left
+                    });
+                  }
                 }
                 else{
                   if(blankArray[0] == 'HOTEL' || blankArray[0] == 'PREMIUM_TOWER'){
