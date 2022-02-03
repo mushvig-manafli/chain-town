@@ -71,7 +71,7 @@
 @media only screen and (max-width: 762px) {
 	#town-map{
 		transform:scale(5);
-		transform-origin:110px center;
+		transform-origin:130px 250px !important;
 	}
 	.menu_hamburger{
 		display: inline-block;
